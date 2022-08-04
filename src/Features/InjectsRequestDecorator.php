@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 final class InjectsRequestDecorator implements Dispatchable
 {
-    public function __construct(private AbstractController $dispatchable)
+    public function __construct(private Dispatchable $dispatchable)
     {
     }
 

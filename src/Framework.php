@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Asgrim\SideEffect;
 
+use Asgrim\SideEffect\Features\InjectsRequestDecorator;
 use Psr\Http\Message\ServerRequestInterface;
 use Stringable;
 
@@ -34,8 +35,8 @@ final class Framework implements Stringable
 
     public static function someSecretMagicToMakeThingsTasty(Dispatchable $dispatchable): Dispatchable
     {
-        if ($dispatchable instanceof CanGetRequest) {
-            $dispatchable->getRequest(self::$dumpingGround[ServerRequestInterface::class]);
+        if ($dispatchable instanceof CanHaveRequestInjected) {
+            $dispatchable = new InjectsRequestDecorator($dispatchable);
         }
 
         return $dispatchable;
