@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Asgrim\SideEffect\Features\AbstractController;
+use Asgrim\SideEffect\Features\CreateDatabase;
 use Asgrim\SideEffect\Framework;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Http\Message\ServerRequestInterface;
@@ -12,6 +13,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 echo (new Framework(
     ServerRequest::fromGlobals(),
     [
+        new CreateDatabase(
+            'sqlite::memory:',
+            null,
+            null
+        ),
         new class extends AbstractController {
             public function __toString() : string
             {
