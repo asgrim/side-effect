@@ -16,7 +16,10 @@ final class InjectsRequestDecorator implements Dispatchable
 
     public function __toString() : string
     {
-        $this->dispatchable->request = Framework::$dumpingGround[ServerRequestInterface::class];
+        if (property_exists($this->dispatchable, 'request')) {
+            $this->dispatchable->request = Framework::$dumpingGround[ServerRequestInterface::class];
+        }
+
         return '' . $this->dispatchable;
     }
 }
