@@ -21,6 +21,6 @@ final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
             $dispatchable = new InjectsRequestDecorator($dispatchable);
         }
 
-        return '' . $dispatchable;
+        return "$dispatchable";
     }
 }
