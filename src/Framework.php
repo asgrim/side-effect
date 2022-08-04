@@ -26,13 +26,19 @@ final class Framework implements Stringable
 
         $this->dispatchables = array_map(
             static function (Dispatchable $dispatchable): Dispatchable {
-                if ($dispatchable instanceof CanGetRequest) {
-                    $dispatchable->getRequest(self::$dumpingGround[ServerRequestInterface::class]);
-                }
-                return $dispatchable;
+                return self::someSecretMagicToMakeThingsTasty($dispatchable);
             },
             $dispatchables
         );
+    }
+
+    public static function someSecretMagicToMakeThingsTasty(Dispatchable $dispatchable): Dispatchable
+    {
+        if ($dispatchable instanceof CanGetRequest) {
+            $dispatchable->getRequest(self::$dumpingGround[ServerRequestInterface::class]);
+        }
+
+        return $dispatchable;
     }
 
     public function __toString() : string
