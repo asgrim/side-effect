@@ -1,5 +1,7 @@
 # Side Effect 💥
 
+> **This is what stringly-typed programming is (h/t [@nilsluxton](https://twitter.com/nilsluxton/status/1555204139562549254))**
+
 Side effect is a middleware-ish framework that does NOT support PSR-15.
 
 Everything is marshalling a string, basically. So, everything is `__toString()`.
