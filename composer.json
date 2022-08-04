@@ -21,6 +21,19 @@
     "config": {
         "sort-packages": true
     },
+    "conflict": {
+        "laravel/laravel": "*",
+        "laravel/framework": "*",
+        "symfony/symfony": "*",
+        "laminas/laminas-mvc": "*",
+        "slim/slim": "*",
+        "mezzio/mezzio": "*",
+        "codeigniter/framework": "*",
+        "yiisoft/yii2": "*",
+        "cakephp/cakephp": "*",
+        "phalcon/zephir": "*",
+        "fuelphp/fuelphp": "*"
+    },
     "require-dev": {
         "guzzlehttp/psr7": "^2.4"
     }
