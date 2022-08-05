@@ -21,6 +21,9 @@ final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
             $dispatchable = new InjectsRequestDecorator($dispatchable);
         }
 
+        /** @noinspection TypesCastingCanBeUsedInspection */
+
+        // phpcs:ignore Squiz.Strings.DoubleQuoteUsage.ContainsVar
         return "$dispatchable";
     }
 }
