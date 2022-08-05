@@ -27,3 +27,39 @@ jobs:
         uses: laminas/laminas-continuous-integration-action@v1
         with:
           job: ${{ matrix.job }}
+
+  test-demo:
+    name: Test demo.php
+    needs: [qa]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          coverage: "none"
+          php-version: "${{ matrix.php-version }}"
+      - uses: ramsey/composer-install@v2
+      - name: "Run PHP builtin server"
+        run: |
+          php -S localhost:8000 demo.php &
+          sleep 2
+      - name: "Check output"
+        run: |
+          TEST1=$(curl -sS http://localhost:8000/?who=james)
+          TEST2=$(curl -sS http://localhost:8000/?who=james)
+          if [[ "$TEST1" == "<h1>Hello james</h1><p>I said hello to you 1 times</p>" ]]; then
+            echo "Test 1 - OK"
+          else
+            echo "Test 1 - Failed: $TEST1";
+            exit 1;
+          fi
+          if [[ "$TEST2" == "<h1>Hello james</h1><p>I said hello to you 2 times</p>" ]]; then
+            echo "Test 2 - OK"
+          else
+            echo "Test 2 - Failed: $TEST2";
+            exit 1;
+          fi
