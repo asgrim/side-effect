@@ -10,8 +10,11 @@ use PDO;
 
 final class CreateDatabase implements Dispatchable
 {
-    public function __construct(private string $dsn, private ?string $username, private ?string $password)
-    {
+    public function __construct(
+        private readonly string $dsn,
+        private readonly ?string $username,
+        private readonly ?string $password
+    ) {
     }
 
     public function __toString(): string

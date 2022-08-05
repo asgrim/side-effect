@@ -9,7 +9,7 @@ use Throwable;
 
 final class ShutTheHellUpDecorator implements Dispatchable
 {
-    public function __construct(private Dispatchable $realDispatchable)
+    public function __construct(private readonly Dispatchable $realDispatchable)
     {
     }
 

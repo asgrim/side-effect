@@ -20,7 +20,7 @@ final class Framework implements Stringable
      */
     public function __construct(
         ServerRequestInterface $request,
-        private array $dispatchables
+        private readonly array $dispatchables
     ) {
         self::$dumpingGround[ServerRequestInterface::class] = $request;
     }

@@ -6,6 +6,7 @@ namespace Asgrim\SideEffect\Features;
 
 use Asgrim\SideEffect\Dispatchable;
 use Asgrim\SideEffect\Framework;
+use JsonException;
 use PDO;
 
 use function assert;
@@ -18,10 +19,11 @@ final class PerformDatabaseQuery implements Dispatchable
     /**
      * @param list<array{index:string|int, value:mixed}> $parameters
      */
-    public function __construct(private string $query, private array $parameters)
+    public function __construct(private readonly string $query, private readonly array $parameters)
     {
     }
 
+    /** @throws JsonException */
     public function __toString(): string
     {
         $pdo = Framework::$dumpingGround[PDO::class];
@@ -30,6 +32,7 @@ final class PerformDatabaseQuery implements Dispatchable
         $statement = $pdo->prepare($this->query);
 
         foreach ($this->parameters as $parameter) {
+            /** @noinspection PhpRedundantVariableDocTypeInspection */
             /** @var mixed $parameterValueReference */
             $parameterValueReference = $parameter['value'];
 

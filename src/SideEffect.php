@@ -8,7 +8,7 @@ use Asgrim\SideEffect\Features\WrapDispatchableInStuffAndDispatchIt;
 
 final class SideEffect
 {
-    public function __construct(private Dispatchable $dispatchable)
+    public function __construct(private readonly Dispatchable $dispatchable)
     {
     }
 
