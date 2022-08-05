@@ -13,7 +13,7 @@ final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
     {
     }
 
-    public function __toString() : string
+    public function __toString(): string
     {
         $dispatchable = $this->dispatchable;
 
@@ -21,6 +21,9 @@ final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
             $dispatchable = new InjectsRequestDecorator($dispatchable);
         }
 
+        /** @noinspection TypesCastingCanBeUsedInspection */
+
+        // phpcs:ignore Squiz.Strings.DoubleQuoteUsage.ContainsVar
         return "$dispatchable";
     }
 }

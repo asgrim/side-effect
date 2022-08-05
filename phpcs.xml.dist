@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="Side Effect Coding standard">
+    <arg value="p"/>
+    <arg value="s"/>
+    <arg name="colors"/>
+
+    <file>src</file>
+
+    <rule ref="Doctrine">
+    </rule>
+</ruleset>
