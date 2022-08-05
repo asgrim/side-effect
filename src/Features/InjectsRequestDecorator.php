@@ -12,7 +12,7 @@ use function property_exists;
 
 final class InjectsRequestDecorator implements Dispatchable
 {
-    public function __construct(private Dispatchable $dispatchable)
+    public function __construct(private readonly Dispatchable $dispatchable)
     {
     }
 

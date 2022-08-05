@@ -9,7 +9,7 @@ use Asgrim\SideEffect\Dispatchable;
 
 final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
 {
-    public function __construct(private Dispatchable $dispatchable)
+    public function __construct(private readonly Dispatchable $dispatchable)
     {
     }
 
