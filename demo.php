@@ -29,7 +29,7 @@ echo (new Framework(
                     . new SideEffect(new ShutTheHellUpDecorator(new PerformDatabaseQuery('CREATE TABLE IF NOT EXISTS names (name VARCHAR(30))', [])))
                     . new SideEffect(new ShutTheHellUpDecorator(new PerformDatabaseQuery('INSERT INTO names VALUES (:name)', [['index' => 'name', 'value' => $name]])))
                     . '<h1>Hello ' . $name . '</h1>'
-                    . '<p>I said hello to you ' . json_decode((string) (new SideEffect(new PerformDatabaseQuery('SELECT COUNT(*) AS times FROM names WHERE name = :name', [['index' => 'name', 'value' => $name]]))), true)[0]['times'] . ' times</p>';
+                    . '<p>I said hello to you ' . json_decode((string) (new SideEffect(new PerformDatabaseQuery('SELECT COUNT(*) AS times FROM names WHERE name = :name', [['index' => 'name', 'value' => $name]]))), true, 512, JSON_THROW_ON_ERROR)[0]['times'] . ' times</p>';
             }
         },
     ]
