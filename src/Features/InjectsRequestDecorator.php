@@ -19,6 +19,7 @@ final class InjectsRequestDecorator implements Dispatchable
     public function __toString(): string
     {
         if (property_exists($this->dispatchable, 'request')) {
+            /** @psalm-suppress NoInterfaceProperties - We did already check the property exists */
             $this->dispatchable->request = Framework::$dumpingGround[ServerRequestInterface::class];
         }
 

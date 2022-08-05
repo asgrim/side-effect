@@ -16,7 +16,7 @@ use const JSON_THROW_ON_ERROR;
 final class PerformDatabaseQuery implements Dispatchable
 {
     /**
-     * @param list<array{key:string|int, value:mixed}> $parameters
+     * @param list<array{index:string|int, value:mixed}> $parameters
      */
     public function __construct(private string $query, private array $parameters)
     {
@@ -30,6 +30,7 @@ final class PerformDatabaseQuery implements Dispatchable
         $statement = $pdo->prepare($this->query);
 
         foreach ($this->parameters as $parameter) {
+            /** @var mixed $parameterValueReference */
             $parameterValueReference = $parameter['value'];
 
             // This is a feature: https://gist.github.com/asgrim/22859d7af570c33ee52f34564c24afb2
