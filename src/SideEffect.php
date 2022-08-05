@@ -10,8 +10,8 @@ final class SideEffect
 {
     public function __construct(private Dispatchable $dispatchable)
     {
-
     }
+
     public function __toString(): string
     {
         return new WrapDispatchableInStuffAndDispatchIt($this->dispatchable) . '';

@@ -11,9 +11,10 @@ use PDO;
 final class CreateDatabase implements Dispatchable
 {
     public function __construct(private string $dsn, private ?string $username, private ?string $password)
-    {}
+    {
+    }
 
-    public function __toString() : string
+    public function __toString(): string
     {
         Framework::$dumpingGround[PDO::class] = new PDO(
             $this->dsn,

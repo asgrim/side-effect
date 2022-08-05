@@ -13,7 +13,7 @@ final class WrapDispatchableInStuffAndDispatchIt implements Dispatchable
     {
     }
 
-    public function __toString() : string
+    public function __toString(): string
     {
         $dispatchable = $this->dispatchable;
 
